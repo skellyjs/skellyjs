@@ -6,9 +6,9 @@
     "bunyan": "*",
     "less": "*",
     "mime": "*",
-  	"morgan": "*",
-  	"swig": "*",
-  	"uglify-js": "*"
+    "morgan": "*",
+    "swig": "*",
+    "uglify-js": "*"
   },
   "devDependencies": {
     "chai": "*",
@@ -19,9 +19,10 @@
   "author": {
     "name": "Darryl Chin <me@darrylchin.com>"
   },
-  "private": true,
   "main": "skelly.js",
   "scripts": {
 
-  }
+  },
+  "repository": "skellyjs/skellyjs",
+  "license": "MIT"
 }
