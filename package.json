@@ -1,0 +1,27 @@
+{
+  "name": "skellyjs",
+  "version": "0.0.1",
+  "description": "",
+  "dependencies": {
+    "bunyan": "*",
+    "less": "*",
+    "mime": "*",
+  	"morgan": "*",
+  	"swig": "*",
+  	"uglify-js": "*"
+  },
+  "devDependencies": {
+    "chai": "*",
+    "chai-things": "*",
+    "mocha": "*",
+    "supertest": "*"
+  },
+  "author": {
+    "name": "Darryl Chin <me@darrylchin.com>"
+  },
+  "private": true,
+  "main": "skelly.js",
+  "scripts": {
+
+  }
+}
