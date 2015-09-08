@@ -4,7 +4,6 @@ var expect = chai.expect;
 
 var skelly = require('../skelly');
 
-require('blanket');
 describe('Skelly', function() {
   describe('Main', function() {
     it('should return an object', function() {

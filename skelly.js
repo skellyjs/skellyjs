@@ -22,8 +22,6 @@ var moduleRoot = module.filename.split("skelly.js")[0];
 
 
 var Skelly = function() {
-  this.libPath = process.env.USECOVERAGE ? 'lib-cov' : 'lib';
-
   // set the app root
   this.appRoot = process.cwd();
   this.moduleRoot = moduleRoot;
@@ -31,7 +29,7 @@ var Skelly = function() {
   // convenience boolean to see if we're in development or not
   this.isDevel = env === 'development';
 
-  this.helpers = require(path.join(this.moduleRoot,this.libPath,'helpers'));
+  this.helpers = require(path.join(this.moduleRoot,'lib','helpers'));
 
   // read in the application's package.json
   this.pkg = require(path.join(this.appRoot, 'package.json'));
@@ -60,7 +58,7 @@ var Skelly = function() {
   // set up an internal logger for framework logs.  This adds "framework=Skelly" to the entry
   // this should be used for all logging within the framework (skelly.intLog.<level>(msg))
   this.intLog = this.log.child({framework: 'Skelly'});
-this.intLog.info('libpath',this.libPath);
+
   // set a global hash to be used until server is restarted
   this.hash = crypto.randomBytes(5).toString('hex');
 
@@ -70,20 +68,20 @@ this.intLog.info('libpath',this.libPath);
 var skelly = module.exports = exports = new Skelly();
 
 // compile css
-require(path.join(skelly.moduleRoot,skelly.libPath,'less'))(function(err, css) {
+require(path.join(skelly.moduleRoot,'lib','less'))(function(err, css) {
   skelly.css = css;
 });
 // compile less
-require(path.join(skelly.moduleRoot,skelly.libPath,'javascript'))(function(err, js) {
+require(path.join(skelly.moduleRoot,'lib','javascript'))(function(err, js) {
   skelly.js = js;
 });
 
 // expose the router
 skelly.router = function(req, res) {
-  require(path.join(skelly.moduleRoot,skelly.libPath,'router'))(skelly, req, res);
+  require(path.join(skelly.moduleRoot,'lib','router'))(skelly, req, res);
 };
 
 // expose the renderer
 skelly.render = function(req, res, view, data) {
-  require(path.join(skelly.moduleRoot,skelly.libPath,'render'))(skelly, req, res, view, data);
+  require(path.join(skelly.moduleRoot,'lib','render'))(skelly, req, res, view, data);
 };
