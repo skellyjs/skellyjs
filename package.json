@@ -13,6 +13,7 @@
   "devDependencies": {
     "chai": "*",
     "chai-things": "*",
+    "coveralls": "*",
     "istanbul": "*",
     "mocha": "*",
     "supertest": "*"
