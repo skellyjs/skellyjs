@@ -13,14 +13,18 @@
   "devDependencies": {
     "chai": "*",
     "chai-things": "*",
+    "coveralls": "^2.11.4",
     "mocha": "*",
+    "mocha-lcov-reporter": "0.0.2",
     "supertest": "*"
   },
   "author": {
     "name": "Darryl Chin <skelly@skellyjs.com>"
   },
   "main": "skelly.js",
-  "scripts": {},
+  "scripts": {
+    "test": "mocha"
+  },
   "repository": "skellyjs/skellyjs",
   "license": "MIT"
 }
