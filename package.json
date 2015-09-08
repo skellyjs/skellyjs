@@ -13,7 +13,9 @@
   "devDependencies": {
     "chai": "*",
     "chai-things": "*",
+    "coveralls": "^2.11.4",
     "mocha": "*",
+    "mocha-lcov-reporter": "0.0.2",
     "supertest": "*"
   },
   "author": {
@@ -21,7 +23,7 @@
   },
   "main": "skelly.js",
   "scripts": {
-    "test":"mocha"
+    "test": "mocha"
   },
   "repository": "skellyjs/skellyjs",
   "license": "MIT"
