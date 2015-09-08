@@ -20,7 +20,9 @@
     "name": "Darryl Chin <skelly@skellyjs.com>"
   },
   "main": "skelly.js",
-  "scripts": {},
+  "scripts": {
+    "test":"mocha"
+  },
   "repository": "skellyjs/skellyjs",
   "license": "MIT"
 }
