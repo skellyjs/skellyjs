@@ -1,6 +1,6 @@
 {
   "name": "skellyjs",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "",
   "dependencies": {
     "bunyan": "*",
@@ -13,9 +13,8 @@
   "devDependencies": {
     "chai": "*",
     "chai-things": "*",
-    "coveralls": "^2.11.4",
+    "istanbul": "*",
     "mocha": "*",
-    "mocha-lcov-reporter": "0.0.2",
     "supertest": "*"
   },
   "author": {
@@ -23,7 +22,7 @@
   },
   "main": "skelly.js",
   "scripts": {
-    "test": "mocha"
+    "test": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- -R spec ./test/skelly.js"
   },
   "repository": "skellyjs/skellyjs",
   "license": "MIT"

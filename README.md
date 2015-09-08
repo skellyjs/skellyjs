@@ -5,6 +5,7 @@ skellyjs framework
 ![skellyjs](https://avatars3.githubusercontent.com/u/14166772?v=3&s=200)
 
 [![npm version](https://badge.fury.io/js/skellyjs.svg)](http://badge.fury.io/js/skellyjs)
+[![travis test](https://travis-ci.org/skellyjs/skellyjs.svg?branch=master)](https://travis-ci.org/skellyjs/skellyjs)
 [![Coverage Status](https://coveralls.io/repos/skellyjs/skellyjs/badge.svg?branch=master&service=github)](https://coveralls.io/github/skellyjs/skellyjs?branch=master)
 
 # Quick Start
