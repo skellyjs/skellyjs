@@ -1,10 +1,9 @@
 # skellyjs
 skellyjs framework
-
-See [generator-skellyjs](https://npmjs.com/package/skellyjs) to scaffold a project
+![skellyjs](https://avatars3.githubusercontent.com/u/14166772?v=3&s=200)
 
 # Quick Start
-### Install the Generator
+### Install the [Generator](https://npmjs.com/package/skellyjs)
 
 ```bash
 $ npm install -g generator-skellyjs
