@@ -45,7 +45,7 @@ var Skelly = function() {
    *   log.trace()
    * in the CLI, when starting this app, pipe the node call to bunyan -o short (node app.js | bunyan -o short) for a more readable output
   */
-  // this should be used in the application (skelly.log.[level](msg))
+  // this should be used in the application (skelly.log.<level>(msg))
   this.log = bunyan.createLogger({name: this.pkg.name});
   // if a shell variable has a set log level, use it
   if (process.env.LOGLEVEL) {
@@ -56,7 +56,7 @@ var Skelly = function() {
   }
 
   // set up an internal logger for framework logs.  This adds "framework=Skelly" to the entry
-  // this should be used for all logging within the framework (skelly.intLog.[level](msg))
+  // this should be used for all logging within the framework (skelly.intLog.<level>(msg))
   this.intLog = this.log.child({framework: 'Skelly'});
 
   // set a global hash to be used until server is restarted

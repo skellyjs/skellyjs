@@ -17,7 +17,7 @@
     "supertest": "*"
   },
   "author": {
-    "name": "Darryl Chin <me@darrylchin.com>"
+    "name": "Darryl Chin <skelly@skellyjs.com>"
   },
   "main": "skelly.js",
   "scripts": {
