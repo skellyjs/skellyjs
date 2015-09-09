@@ -95,6 +95,11 @@ In your main script:
 var http = require('http'); // http server
 var skelly = require('skellyjs'); // skellyjs framework
 
+// generate the css
+skelly.generateCss();
+// generate the javascript
+skelly.generateJs();
+
 // create the server
 var server = http.createServer(function(req, res) {
   skelly.router(req,res);
