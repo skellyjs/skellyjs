@@ -29,6 +29,13 @@ var Skelly = function() {
   // convenience boolean to see if we're in development or not
   this.isDevel = env === 'development';
 
+  this.controllersRoot = 'controllers';
+  this.htrootRoot = 'htroot';
+  this.imagesRoot = 'images';
+  this.javascriptsRoot = 'javascripts';
+  this.stylesheetsRoot = 'stylesheets';
+  this.viewsRoot = 'views';
+
   this.helpers = require(path.join(this.moduleRoot,'lib','helpers'));
 
   // read in the application's package.json
@@ -68,13 +75,17 @@ var Skelly = function() {
 var skelly = module.exports = exports = new Skelly();
 
 // compile css
-require(path.join(skelly.moduleRoot,'lib','less'))(function(err, css) {
-  skelly.css = css;
-});
+skelly.generateCss = function() {
+  require(path.join(skelly.moduleRoot,'lib','less'))(skelly, function(err, css) {
+    skelly.css = css;
+  });
+};
 // compile less
-require(path.join(skelly.moduleRoot,'lib','javascript'))(function(err, js) {
-  skelly.js = js;
-});
+skelly.generateJs = function() {
+  require(path.join(skelly.moduleRoot,'lib','javascript'))(skelly, function(err, js) {
+    skelly.js = js;
+  });
+};
 
 // expose the router
 skelly.router = function(req, res) {

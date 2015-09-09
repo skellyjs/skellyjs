@@ -1,0 +1,21 @@
+{% extends 'layouts/main.html' %}
+
+{% set title = "" %}
+
+{% block stylesheets %}
+	{% parent %}
+	{# insert page-specific script here #}
+	<link rel="stylesheet" href="/stylesheets/{{'index.min.css'|hash}}">
+	<link rel="shortcut icon" href="/images/{{'favicon.ico'|hash}}" />
+{% endblock stylesheets %}
+
+{% block content %}
+<h1>Hello, my name is Shelby!</h1>
+<img src="/images/{{'shelby.jpg'|hash}}" />
+{% endblock content %}
+
+{% block javascripts %}
+	{% parent %}
+	{# insert page-specific script here #}
+	<script src="/javascripts/{{'index.min.js'|hash}}"></script>
+{% endblock javascripts %}

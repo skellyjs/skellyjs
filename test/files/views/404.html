@@ -1,0 +1,21 @@
+{% extends 'layouts/main.html' %}
+
+{% set title = "" %}
+
+{% block stylesheets %}
+	{% parent %}
+	{# insert page-specific script here #}
+	<link rel="stylesheet" href="/stylesheets/{{'index.min.css'|hash}}">
+{% endblock stylesheets %}
+
+{% block content %}
+<h1>Ooops!</h1>
+<h2>This is not the page you were looking for!</h2>
+<p>Could not find a page at: <strong>{{path}}</strong></p>
+
+{% endblock content %}
+
+{% block javascripts %}
+	{% parent %}
+	{# insert page-specific script here #}
+{% endblock javascripts %}

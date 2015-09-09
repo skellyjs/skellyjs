@@ -1,6 +1,6 @@
 {
   "name": "skellyjs",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "",
   "dependencies": {
     "bunyan": "*",
@@ -16,6 +16,7 @@
     "coveralls": "*",
     "istanbul": "*",
     "mocha": "*",
+    "superagent": "*",
     "supertest": "*"
   },
   "author": {
@@ -25,6 +26,18 @@
   "scripts": {
     "test": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- -R spec ./test/skelly.js"
   },
+  "keywords": [
+    "mvc",
+    "web",
+    "app",
+    "boilerplate",
+    "framework",
+    "mongoose",
+    "less",
+    "site",
+    "website",
+    "swig"
+  ],
   "repository": "skellyjs/skellyjs",
   "license": "MIT"
 }
