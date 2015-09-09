@@ -111,7 +111,8 @@ skelly.log.debug('Listening on port:', server.address().port);
 skelly.log.debug("Hash:",skelly.hash);
 ```
 
-
+# Node.js Style Guide
+[NODESTYLEGUIDE](NODESTYLEGUIDE.md)
 
 
 ## License
