@@ -1,0 +1,74 @@
+@columns: 12;			// How many columns is this based off of
+@maxWidth: 100%;		// What's the maximum width of a row
+@defaultGutters: 2rem;	// What's the default/standard gutter size of the columns
+@smallGutters: 1rem;
+
+// Sigh
+.clearFix {
+	content:" ";
+	clear:both;
+	display:table;
+}
+
+.row {
+	width:100%;
+	max-width: @maxWidth;
+	margin:0 auto;
+	-moz-box-sizing: border-box;
+	     box-sizing: border-box;
+
+	&:after {
+		.clearFix
+	}
+}
+
+.box {
+	padding:@smallGutters;
+	border-radius:5px;
+}
+
+
+.column {
+	position:relative;
+	float:left;
+	width:100%;
+	padding:@smallGutters;
+	-moz-box-sizing: border-box;
+	     box-sizing: border-box;
+}
+
+.columnLoop (@i) when (@i > 0) {
+	.column.small-@{i} {
+		width:((@i / @columns) * 100%);
+	}
+	.column.push-@{i} {
+		margin-left:((@i / @columns) * 100%);
+	}
+	.column.pull-@{i} {
+		margin-left:-((@i / @columns) * 100%);
+	}
+	.column.small-push-@{i} {
+		margin-left:((@i / @columns) * 100%);
+	}
+	.column.small-pull-@{i} {
+		margin-left:-((@i / @columns) * 100%);
+	}
+	.columnLoop(@i - 1);
+}
+.columnLoop (0) {}
+
+// Outputs:
+// .column.small-{n} {
+// 	width:{n/columns*100%};
+// }
+.columnLoop (@columns);
+
+.small-hide {
+	display:none;
+}
+.smallCenteredText {
+	text-align:center;
+}
+
+// Import the larger set of classes, but only if media query is appropriate
+@import "gridLarge.less" screen and (min-width: 48em);
