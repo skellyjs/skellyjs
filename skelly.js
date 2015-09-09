@@ -1,5 +1,5 @@
 var bunyan = require('bunyan'); // log library to output to stdout
-var crypto = require("crypto"); // hashing library
+var crypto = require('crypto'); // hashing library
 var http = require('http'); // http server
 var path = require('path'); // path library to help manipulate paths
 
@@ -18,7 +18,7 @@ var env = process.env.NODE_ENV || 'development';
 //   return parts.join(path.sep);
 // })(module.parent ? module.parent.paths[0] : module.paths[0]);
 
-var moduleRoot = module.filename.split("skelly.js")[0];
+var moduleRoot = module.filename.split('skelly.js')[0];
 
 
 var Skelly = function() {
@@ -80,7 +80,7 @@ skelly.generateCss = function() {
     skelly.css = css;
   });
 };
-// compile less
+// compile js
 skelly.generateJs = function() {
   require(path.join(skelly.moduleRoot,'lib','javascript'))(skelly, function(err, js) {
     skelly.js = js;

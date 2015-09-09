@@ -85,7 +85,7 @@ By default (development mode), debug and higher are output, while trace is ignor
 If you'd like to install the framework into your own app:
 
 ```sh
-npm install skellyjs --save
+$ npm install skellyjs --save
 ```
 
 In your main script:
