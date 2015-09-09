@@ -214,6 +214,21 @@ describe('Skelly', function() {
       });
     });
 
+    describe('Static Binary File (/htroot/favicon.ico)', function(){
+      it('should return a text file',function(done){
+        var data;
+        request.get('/favicon.ico')
+          .expect(200)
+          .expect(function(res) {
+            data = res;
+          })
+          .end(function() {
+            expect(data.header).to.contain({'content-type' : 'image/x-icon'});
+            done();
+          });
+      });
+    });
+
     describe('404 Static File (/htroot/asdf.txt)', function(){
       it('should return a 404 error',function(done){
         var data;
