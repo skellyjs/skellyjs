@@ -190,3 +190,5 @@ skelly.log.debug("Hash:",skelly.hash);
 ## License
 
   [MIT](LICENSE)
+
+**[⬆ back to top](#table-of-contents)**
