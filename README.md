@@ -8,36 +8,49 @@ skellyjs framework
 [![travis test](https://travis-ci.org/skellyjs/skellyjs.svg?branch=master)](https://travis-ci.org/skellyjs/skellyjs)
 [![Coverage Status](https://coveralls.io/repos/skellyjs/skellyjs/badge.svg?branch=master&service=github)](https://coveralls.io/github/skellyjs/skellyjs?branch=master)
 
-# Quick Start
-### Install the [Generator](https://npmjs.com/package/generator-skellyjs)
+## Table of Contents
+
+  1. [Quick Start](#quick-start)
+  1. [Creating Pages (Controllers)](#creating-pages-controllers)
+  1. [Models](#models)
+  1. [HTML Views](#html-views)
+  1. [Client-side Javascript Files](#client-side-javascript-files)
+  1. [CSS Files](#css-files)
+  1. [Logging](#logging)
+  1. [Custom Installation](#custom-installation)
+  1. [Node.js Style Guide](#nodejs-style-guide)
+  1. [License](#license)
+
+## Quick Start
+#### Install the [Generator](https://npmjs.com/package/generator-skellyjs)
 
 ```bash
 $ npm install -g generator-skellyjs
 ```
 
-### Create the app:
+#### Create the app:
 
 ```bash
 $ skelly /tmp/project && cd /tmp/project
 ```
 
-### Install dependencies:
+#### Install dependencies:
 
 ```bash
 $ npm install
 ```
 
-### Start the app
+#### Start the app
 
 ```bash
 $ npm start
 ```
 
-# Creating Pages
+## Creating Pages (Controllers)
 
 The built in router will automatically look for a controller named the same as the url path.  The index controller is used for /. To create a */help* page, just create a controller named *help.js*.  Index and 404 controller examples are in /controllers.
 
-# Models
+## Models
 
 To connecto to your [MongoDB](), make sure to set process.env.DB_HOST, process.env.DB_NAME, process.env.DB_USER, and process.env.DB_PASSWORD.  [DotEnv](https://github.com/motdotla/dotenv) is built into skelly, so if you create a .env file in your application's root, you should set these values there.  A .env example file is in the root.
 
@@ -81,7 +94,7 @@ module.exports = function(skelly) {
 };
 ```
 
-# HTML Views
+## HTML Views
 
 The built in templating engine is [swig](http://paularmstrong.github.io/swig/).  Your views should go into the */views* folder.  Javascript (*/javascripts* )and CSS (*/stylesheets*) includes will be read into memory.  You can hash javascript, css, or images using a skelly swig filter. Index and 404 views, plus a main layout, examples are in /views (and /views/layouts).
 
@@ -99,7 +112,7 @@ Example output:
 
 The system will automatically return the current file for any hash.
 
-# Javascript Files
+## Client-side Javascript Files
 
 The javascript files are read into memory on load.  Required files are not combined into a single file, but that feature is coming.  They are, however, minified using [Uglify-JS](https://github.com/mishoo/UglifyJS2).  An index javascript example file is located in /javascripts
 
@@ -111,7 +124,7 @@ The built in CSS precompiler is [LESS](http://lesscss.org).  I suggest you creat
 @import 'global';
 ```
 
-# Logging
+## Logging
 
 To log something to stdout, there's a built in method (using [bunyan](https://github.com/trentm/node-bunyan)).  You can simply call ```skelly.log.<level>('Hello!')```.
 ```level``` can be (from most severe to least):
@@ -124,7 +137,7 @@ To log something to stdout, there's a built in method (using [bunyan](https://gi
 
 By default (development mode), debug and higher are output, while trace is ignored.  In production (```NODE_ENV=production```), info and higher are output, while debug and trace are ignored.  You can set an environment variable to set the log level ```LOGLEVEL=trace```.
 
-# Custom Installation
+## Custom Installation
 
 If you'd like to install the framework into your own app:
 
@@ -155,7 +168,7 @@ skelly.log.debug('Listening on port:', server.address().port);
 skelly.log.debug("Hash:",skelly.hash);
 ```
 
-# Node.js Style Guide
+## Node.js Style Guide
 [NODESTYLEGUIDE](NODESTYLEGUIDE.md)
 
 
