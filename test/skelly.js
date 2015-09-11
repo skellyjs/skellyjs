@@ -2,6 +2,11 @@ var chai = require('chai');
 chai.use(require('chai-things'));
 var expect = chai.expect;
 
+process.env.DB_HOST='localhost';
+process.env.DB_NAME='skelly';
+process.env.DB_USER='skelly';
+process.env.DB_PASSWORD='test';
+
 var http = require('http'); // http server
 var request = require('supertest');
 var skelly = require('../skelly');
@@ -21,8 +26,10 @@ describe('Skelly', function() {
     skelly.htrootRoot = 'test/files/htroot';
     skelly.imagesRoot = 'test/files/images';
     skelly.javascriptsRoot = 'test/files/javascripts';
+    skelly.modelsRoot = 'test/files/models';
     skelly.stylesheetsRoot = 'test/files/stylesheets';
     skelly.viewsRoot = 'test/files/views';
+
 
     skelly.generateCss();
     skelly.generateJs();

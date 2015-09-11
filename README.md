@@ -35,21 +35,65 @@ $ npm start
 
 # Creating Pages
 
-The built in router will automatically look for a controller named the same as the url path.  The index controller is used for /. To create a */help* page, just create a controller named *help.js*.
+The built in router will automatically look for a controller named the same as the url path.  The index controller is used for /. To create a */help* page, just create a controller named *help.js*.  Index and 404 controller examples are in /controllers.
+
+# Models
+
+To connecto to your [MongoDB](), make sure to set process.env.DB_HOST, process.env.DB_NAME, process.env.DB_USER, and process.env.DB_PASSWORD.  [DotEnv](https://github.com/motdotla/dotenv) is built into skelly, so if you create a .env file in your application's root, you should set these values there.  A .env example file is in the root.
+
+```yaml
+# Database host(s) comma separated (10.0.0.1,10.0.0.2)
+DB_HOST=localhost
+
+# Database Name
+DB_NAME=skelly
+
+# Database user
+DB_USER=user
+
+# Database password
+DB_PASSWORD=pass
+```
+
+
+[Mongoose](http://mongoosejs.com) models should be included in your controller by passing in the skelly object.  You can use the built in skelly variables for appRoot and modelsRoot.  An index model example is in /models.
+
+```javascript
+var Index = require(path.join(skelly.appRoot,skelly.modelsRoot,'index'))(skelly);
+```
+The model itself is constructed just like all other Mongoose models, but using the skelly.mongoose object (instead of including the mongoose library)
+
+```javascript
+module.exports = function(skelly) {
+  return skelly.mongoose.model(
+
+    // name of your model (http://mongoosejs.com/docs/models.html)
+    'Test',
+
+    // schema (http://mongoosejs.com/docs/schematypes.html)
+    {
+      title : {
+        type: String,
+        required: true
+      }
+    }
+  );
+};
+```
 
 # HTML Views
 
-The built in templating engine is [swig](http://paularmstrong.github.io/swig/).  Your views should go into the */views* folder.  Javascript (*/javascripts* )and CSS (*/stylesheets*) includes will be read into memory.  You can hash javascript, css, or images using a skelly swig filter.
+The built in templating engine is [swig](http://paularmstrong.github.io/swig/).  Your views should go into the */views* folder.  Javascript (*/javascripts* )and CSS (*/stylesheets*) includes will be read into memory.  You can hash javascript, css, or images using a skelly swig filter. Index and 404 views, plus a main layout, examples are in /views (and /views/layouts).
 
 ```html
 <script src="/javascripts/{{'index.min.js'|hash}}"></script>
-<link rel="stylesheet" href="/stylesheets/{{'index.min.css'|hash}}">
+<link rel="stylesheet" href="/stylesheets/{{'index.min.css'|hash}}" />
 <img src="/images/{{'shelby.jpg'|hash}}" />
 ```
 Example output:
 ```html
 <script src="/javascripts/index.min.e0df532694.js"></script>
-<link rel="stylesheet" href="/stylesheets/index.min.e0df532694.css">
+<link rel="stylesheet" href="/stylesheets/index.min.e0df532694.css" />
 <img src="/images/shelby.e0df532694.jpg'" />
 ```
 
@@ -57,11 +101,11 @@ The system will automatically return the current file for any hash.
 
 # Javascript Files
 
-The javascript files are read into memory on load.  Required files are not combined into a single file, but that feature is coming.  They are, however, minified using [Uglify-JS](https://github.com/mishoo/UglifyJS2).
+The javascript files are read into memory on load.  Required files are not combined into a single file, but that feature is coming.  They are, however, minified using [Uglify-JS](https://github.com/mishoo/UglifyJS2).  An index javascript example file is located in /javascripts
 
 # CSS Files
 
-The built in CSS precompiler is [LESS](http://lesscss.org).  I suggest you create a single less file for each view (*/stylesheets*), and include global less files (*/stylesheets/includes*) as needed:
+The built in CSS precompiler is [LESS](http://lesscss.org).  I suggest you create a single less file for each view (*/stylesheets*), and include global less files (*/stylesheets/includes*) as needed.  An index less file, and several includes, are located in /stylesheets (and /styplesheets/includes)
 ```less
 /* index.less */
 @import 'global';

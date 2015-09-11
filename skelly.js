@@ -1,7 +1,11 @@
 var bunyan = require('bunyan'); // log library to output to stdout
 var crypto = require('crypto'); // hashing library
 var http = require('http'); // http server
+var mongoose = require('mongoose'); // mongoose (mongo connector)
 var path = require('path'); // path library to help manipulate paths
+
+// load .env file
+require('dotenv').load();
 
 // set the environment from shell variable.  this changes things like api keys, logging, and other configurations (default to development)
 var env = process.env.NODE_ENV || 'development';
@@ -29,12 +33,18 @@ var Skelly = function() {
   // convenience boolean to see if we're in development or not
   this.isDevel = env === 'development';
 
+  // default root location for files
   this.controllersRoot = 'controllers';
-  this.htrootRoot = 'htroot';
-  this.imagesRoot = 'images';
+  this.htrootRoot      = 'htroot';
+  this.imagesRoot      = 'images';
   this.javascriptsRoot = 'javascripts';
+  this.modelsRoot      = 'models';
   this.stylesheetsRoot = 'stylesheets';
-  this.viewsRoot = 'views';
+  this.viewsRoot       = 'views';
+
+  if (process.env.DB_HOST && process.env.DB_NAME) {
+    require(path.join(this.moduleRoot,'lib','mongoose'))(this);
+  }
 
   this.helpers = require(path.join(this.moduleRoot,'lib','helpers'));
 
@@ -73,6 +83,16 @@ var Skelly = function() {
 
 // expose Skelly object
 var skelly = module.exports = exports = new Skelly();
+
+// connect to mongoose
+if (skelly.mongoURI) {
+  (function mongooseConnect() {
+    skelly.intLog.debug('Connecting to mongo:',skelly.mongoURI);
+    skelly.mongoose = require('mongoose');
+    // Connect to DB
+    skelly.mongoose.connect(skelly.mongoURI);
+  })();
+}
 
 // compile css
 skelly.generateCss = function() {
