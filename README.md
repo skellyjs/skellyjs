@@ -124,7 +124,7 @@ The javascript files are read into memory on load.  Required files are not combi
 
 **[⬆ back to top](#table-of-contents)**
 
-# CSS Files
+## CSS Files
 
 The built in CSS precompiler is [LESS](http://lesscss.org).  I suggest you create a single less file for each view (*/stylesheets*), and include global less files (*/stylesheets/includes*) as needed.  An index less file, and several includes, are located in /stylesheets (and /styplesheets/includes)
 ```less
