@@ -45,10 +45,13 @@ $ npm install
 ```bash
 $ npm start
 ```
+**[⬆ back to top](#table-of-contents)**
 
 ## Creating Pages (Controllers)
 
 The built in router will automatically look for a controller named the same as the url path.  The index controller is used for /. To create a */help* page, just create a controller named *help.js*.  Index and 404 controller examples are in /controllers.
+
+**[⬆ back to top](#table-of-contents)**
 
 ## Models
 
@@ -67,7 +70,6 @@ DB_USER=user
 # Database password
 DB_PASSWORD=pass
 ```
-
 
 [Mongoose](http://mongoosejs.com) models should be included in your controller by passing in the skelly object.  You can use the built in skelly variables for appRoot and modelsRoot.  An index model example is in /models.
 
@@ -94,6 +96,8 @@ module.exports = function(skelly) {
 };
 ```
 
+**[⬆ back to top](#table-of-contents)**
+
 ## HTML Views
 
 The built in templating engine is [swig](http://paularmstrong.github.io/swig/).  Your views should go into the */views* folder.  Javascript (*/javascripts* )and CSS (*/stylesheets*) includes will be read into memory.  You can hash javascript, css, or images using a skelly swig filter. Index and 404 views, plus a main layout, examples are in /views (and /views/layouts).
@@ -112,9 +116,13 @@ Example output:
 
 The system will automatically return the current file for any hash.
 
+**[⬆ back to top](#table-of-contents)**
+
 ## Client-side Javascript Files
 
 The javascript files are read into memory on load.  Required files are not combined into a single file, but that feature is coming.  They are, however, minified using [Uglify-JS](https://github.com/mishoo/UglifyJS2).  An index javascript example file is located in /javascripts
+
+**[⬆ back to top](#table-of-contents)**
 
 # CSS Files
 
@@ -123,6 +131,8 @@ The built in CSS precompiler is [LESS](http://lesscss.org).  I suggest you creat
 /* index.less */
 @import 'global';
 ```
+
+**[⬆ back to top](#table-of-contents)**
 
 ## Logging
 
@@ -136,6 +146,8 @@ To log something to stdout, there's a built in method (using [bunyan](https://gi
    * trace
 
 By default (development mode), debug and higher are output, while trace is ignored.  In production (```NODE_ENV=production```), info and higher are output, while debug and trace are ignored.  You can set an environment variable to set the log level ```LOGLEVEL=trace```.
+
+**[⬆ back to top](#table-of-contents)**
 
 ## Custom Installation
 
@@ -168,9 +180,12 @@ skelly.log.debug('Listening on port:', server.address().port);
 skelly.log.debug("Hash:",skelly.hash);
 ```
 
+**[⬆ back to top](#table-of-contents)**
+
 ## Node.js Style Guide
 [NODESTYLEGUIDE](NODESTYLEGUIDE.md)
 
+**[⬆ back to top](#table-of-contents)**
 
 ## License
 
