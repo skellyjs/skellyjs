@@ -72,7 +72,7 @@ DB_USER=user
 DB_PASSWORD=pass
 ```
 
-[Mongoose](http://mongoosejs.com) models will be included automatically in the skelly object.  To access them, use the ```skelly.models.<filename>``` method.  You can use the built in skelly variables for appRoot and modelsRoot.  An index model example is in /models.
+[Mongoose](http://mongoosejs.com) models will be included automatically in the skelly object.  To access them, use the ```skelly.models.<filename>``` method.  An index model example is in /models.
 
 The model itself is constructed just like all other Mongoose models, but using the skelly.mongoose object (instead of including the mongoose library)
 
