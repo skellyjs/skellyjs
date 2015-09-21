@@ -1,7 +1,7 @@
 {
-  "name": "{name}",
+  "name": "skelly-test",
   "version": "0.0.1",
-  "description": "{name} Description",
+  "description": "skelly-test Description",
   "dependencies": {
     "skellyjs":"*"
   },
