@@ -55,9 +55,10 @@ The built in router will automatically look for a controller named the same as t
 
 ## Models
 
-To connecto to your [MongoDB](), make sure to set process.env.DB_HOST, process.env.DB_NAME, process.env.DB_USER, and process.env.DB_PASSWORD.  [DotEnv](https://github.com/motdotla/dotenv) is built into skelly, so if you create a .env file in your application's root, you should set these values there.  A .env example file is in the root.
+To connect to your [MongoDB](https://www.mongodb.org), make sure to set ```process.env.DB_HOST```, ```process.env.DB_NAME```, ```process.env.DB_USER```, and ```process.env.DB_PASSWORD```.  [DotEnv](https://github.com/motdotla/dotenv) is built into skelly, so if you create a .env file in your application's root, you should set these values there.  A .env example file is in the root.
 
 ```yaml
+/* /.env */
 # Database host(s) comma separated (10.0.0.1,10.0.0.2)
 DB_HOST=localhost
 
@@ -71,14 +72,13 @@ DB_USER=user
 DB_PASSWORD=pass
 ```
 
-[Mongoose](http://mongoosejs.com) models should be included in your controller by passing in the skelly object.  You can use the built in skelly variables for appRoot and modelsRoot.  An index model example is in /models.
+[Mongoose](http://mongoosejs.com) models will be included automatically in the skelly object.  To access them, use the ```skelly.models.<filename>``` method.  You can use the built in skelly variables for appRoot and modelsRoot.  An index model example is in /models.
 
-```javascript
-var Index = require(path.join(skelly.appRoot,skelly.modelsRoot,'index'))(skelly);
-```
 The model itself is constructed just like all other Mongoose models, but using the skelly.mongoose object (instead of including the mongoose library)
 
 ```javascript
+/* /models/index.js */
+
 module.exports = function(skelly) {
   return skelly.mongoose.model(
 
@@ -95,6 +95,31 @@ module.exports = function(skelly) {
   );
 };
 ```
+
+In your controller, access the index model using ```skelly.models.index```.
+
+```javascript
+/* /controllers/index.js */
+
+skelly.models.index.findOne({}, function(err, index) {
+	if (err) {
+	  skelly.log.error(err);
+	  res.end(err);
+	} else {
+
+	  // if no entry, just pass a static title
+	  if (!index) {
+	    skelly.render(req, res, viewFile, {title:"Hello, my name is Shelby!"});
+
+	  // if there's an entry, pass it to use as the title
+	  } else {
+	    skelly.render(req, res, viewFile, index);
+	  }
+	}
+});
+```
+
+
 
 **[⬆ back to top](#table-of-contents)**
 
@@ -160,7 +185,7 @@ $ npm install skellyjs --save
 In your main script:
 
 ```javascript
-/* app.js */
+/* /app.js */
 var http = require('http'); // http server
 var skelly = require('skellyjs'); // skellyjs framework
 

@@ -7,5 +7,5 @@ module.exports = function(skelly, req, res) {
     path : req.requrl.path
   };
 
-  skelly.render(req, res, viewFile, data);
+  skelly.render(req, res, viewFile, data, 404);
 };

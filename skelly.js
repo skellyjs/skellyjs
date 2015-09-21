@@ -42,10 +42,6 @@ var Skelly = function() {
   this.stylesheetsRoot = 'stylesheets';
   this.viewsRoot       = 'views';
 
-  if (process.env.DB_HOST && process.env.DB_NAME) {
-    require(path.join(this.moduleRoot,'lib','mongoose'))(this);
-  }
-
   this.helpers = require(path.join(this.moduleRoot,'lib','helpers'));
 
   // read in the application's package.json
@@ -84,24 +80,20 @@ var Skelly = function() {
 // expose Skelly object
 var skelly = module.exports = exports = new Skelly();
 
-// connect to mongoose
-if (skelly.mongoURI) {
-  (function mongooseConnect() {
-    skelly.intLog.debug('Connecting to mongo:',skelly.mongoURI);
-    skelly.mongoose = require('mongoose');
-    // Connect to DB
-    skelly.mongoose.connect(skelly.mongoURI);
-  })();
-}
+skelly.init = function() {
+  // if database host and name are specified, include the mongoose library and connect the models
+  if (process.env.DB_HOST && process.env.DB_NAME) {
+    require(path.join(this.moduleRoot,'lib','mongoose'))(this, function(err, models) {
+      skelly.models = models;
+    });
+  }
 
-// compile css
-skelly.generateCss = function() {
+  // look for less files and compile them into memory
   require(path.join(skelly.moduleRoot,'lib','less'))(skelly, function(err, css) {
     skelly.css = css;
   });
-};
-// compile js
-skelly.generateJs = function() {
+
+  // look for javascript files and minify them and put them into memory
   require(path.join(skelly.moduleRoot,'lib','javascript'))(skelly, function(err, js) {
     skelly.js = js;
   });
@@ -113,6 +105,6 @@ skelly.router = function(req, res) {
 };
 
 // expose the renderer
-skelly.render = function(req, res, view, data) {
-  require(path.join(skelly.moduleRoot,'lib','render'))(skelly, req, res, view, data);
+skelly.render = function(req, res, view, data, statusCode) {
+  require(path.join(skelly.moduleRoot,'lib','render'))(skelly, req, res, view, data, statusCode);
 };

@@ -2,7 +2,7 @@ var chai = require('chai');
 chai.use(require('chai-things'));
 var expect = chai.expect;
 
-process.env.DB_HOST='localhost';
+process.env.DB_HOST='localhost,127.0.0.1';
 process.env.DB_NAME='skelly';
 process.env.DB_USER='skelly';
 process.env.DB_PASSWORD='test';
@@ -30,9 +30,7 @@ describe('Skelly', function() {
     skelly.stylesheetsRoot = 'test/files/stylesheets';
     skelly.viewsRoot = 'test/files/views';
 
-
-    skelly.generateCss();
-    skelly.generateJs();
+    skelly.init();
 
     // create the server
     var server = http.createServer(function(req, res) {
