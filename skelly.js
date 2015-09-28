@@ -10,25 +10,12 @@ require('dotenv').load();
 // set the environment from shell variable.  this changes things like api keys, logging, and other configurations (default to development)
 var env = process.env.NODE_ENV || 'development';
 
-/**
- * Don't use process.cwd() as it breaks module encapsulation
- * Instead, let's use module.parent if it's present, or the module itself if there is no parent (probably testing directly if that's the case)
- * This way, the consuming app/module can be an embedded node_module and path resolutions will still work
- * (process.cwd() breaks module encapsulation if the consuming app/module is itself a node_module)
- */
-// var moduleRoot = (function(_rootPath) {
-//   var parts = _rootPath.split(path.sep);
-//   parts.pop(); //get rid of /node_modules from the end of the path
-//   return parts.join(path.sep);
-// })(module.parent ? module.parent.paths[0] : module.paths[0]);
-
-var moduleRoot = module.filename.split('skelly.js')[0];
-
-
 var Skelly = function() {
   // set the app root
   this.appRoot = process.cwd();
-  this.moduleRoot = moduleRoot;
+
+  // set skelly's root
+  this.moduleRoot = module.filename.split('skelly.js')[0];
 
   // convenience boolean to see if we're in development or not
   this.isDevel = env === 'development';
@@ -83,7 +70,7 @@ var skelly = module.exports = exports = new Skelly();
 skelly.init = function() {
   // if database host and name are specified, include the mongoose library and connect the models
   if (process.env.DB_HOST && process.env.DB_NAME) {
-    require(path.join(this.moduleRoot,'lib','mongoose'))(this, function(err, models) {
+    require(path.join(skelly.moduleRoot,'lib','mongoose'))(skelly, function(err, models) {
       skelly.models = models;
     });
   }

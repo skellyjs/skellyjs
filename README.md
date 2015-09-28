@@ -170,7 +170,7 @@ To log something to stdout, there's a built in method (using [bunyan](https://gi
    * debug
    * trace
 
-By default (development mode), debug and higher are output, while trace is ignored.  In production (```NODE_ENV=production```), info and higher are output, while debug and trace are ignored.  You can set an environment variable to set the log level ```LOGLEVEL=trace```.
+By default (development mode), debug and higher are output, while trace is ignored.  In production (```NODE_ENV=production```), info and higher are output, while debug and trace are ignored.  You can set the log level ```LOGLEVEL=trace``` in your .env file.
 
 **[⬆ back to top](#table-of-contents)**
 
