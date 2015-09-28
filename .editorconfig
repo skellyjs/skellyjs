@@ -1,0 +1,24 @@
+# This file is for unifying the coding style for different editors and IDEs
+# editorconfig.org
+
+# top-most EditorConfig file
+root = true
+
+[*]
+# default charset
+charset = utf-8
+
+# Unix-style newlines
+end_of_line = lf
+
+# Indent using spaces
+indent_style = space
+
+# Indent 2 spaces per tab
+indent_size = 2
+
+#newline ending every file
+insert_final_newline = true
+
+# Remove trailing whitespace
+trim_trailing_whitespace = true

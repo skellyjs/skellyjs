@@ -1,7 +1,5 @@
 var bunyan = require('bunyan'); // log library to output to stdout
 var crypto = require('crypto'); // hashing library
-var http = require('http'); // http server
-var mongoose = require('mongoose'); // mongoose (mongo connector)
 var path = require('path'); // path library to help manipulate paths
 
 // load .env file
@@ -35,7 +33,7 @@ var Skelly = function() {
   this.pkg = require(path.join(this.appRoot, 'package.json'));
 
   /*
-   * create the log instance.  to use, log.info() instead of console.log().  
+   * create the log instance.  to use, log.info() instead of console.log().
    * also available (in order of severity (high to low)) are:
    *   log.fatal()
    *   log.error()

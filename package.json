@@ -1,6 +1,6 @@
 {
   "name": "skellyjs",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "",
   "dependencies": {
     "bunyan": "*",
@@ -27,6 +27,8 @@
   },
   "main": "skelly.js",
   "scripts": {
+    "lint": "eslint .",
+    "release": "gulp release",
     "test": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- -R spec ./test/skelly.js"
   },
   "keywords": [
