@@ -17,6 +17,8 @@
     "chai": "*",
     "chai-things": "*",
     "coveralls": "*",
+    "gulp": "*",
+    "gulp-git": "*",
     "istanbul": "*",
     "mocha": "*",
     "superagent": "*",
