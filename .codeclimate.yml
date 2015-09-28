@@ -22,7 +22,7 @@ engines:
   gofmt:
     enabled: true
   eslint:
-    enabled: true
+    enabled: false
   csslint:
     enabled: true
 
