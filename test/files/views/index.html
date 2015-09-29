@@ -1,6 +1,6 @@
 {% extends 'layouts/main.html' %}
 
-{% set title = "" %}
+{% set pageTitle = "" %}
 
 {% block stylesheets %}
 	{% parent %}
@@ -10,8 +10,9 @@
 {% endblock stylesheets %}
 
 {% block content %}
-<h1>Hello, my name is Shelby!</h1>
+<h1>{{title}}</h1>
 <img src="/images/{{'shelby.jpg'|hash}}" />
+<p>Current date is {{_now()|date('F jS, Y')}}</p>
 {% endblock content %}
 
 {% block javascripts %}

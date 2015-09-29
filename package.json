@@ -1,7 +1,7 @@
 {
   "name": "skellyjs",
-  "version": "0.1.6",
-  "description": "",
+  "version": "0.1.7",
+  "description": "skellyjs framework",
   "dependencies": {
     "bunyan": "*",
     "dotenv": "*",
@@ -25,7 +25,8 @@
     "supertest": "*"
   },
   "author": {
-    "name": "Darryl Chin <skelly@skellyjs.com>"
+    "name": "Darryl Chin",
+    "email": "skelly@skellyjs.com"
   },
   "main": "skelly.js",
   "scripts": {
@@ -45,6 +46,13 @@
     "website",
     "swig"
   ],
-  "repository": "skellyjs/skellyjs",
-  "license": "MIT"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/skellyjs/skellyjs"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/skellyjs/skellyjs/issues"
+  },
+  "homepage": "http://skellyjs.com"
 }
