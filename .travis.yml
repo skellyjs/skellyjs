@@ -5,6 +5,7 @@ notifications:
 node_js:
   - '0.11'
   - '0.12'
+sudo: required
 services: mongodb
 before_script:
   - sleep 15
