@@ -4,8 +4,7 @@ notifications:
     - skelly@skellyjs.com
 node_js:
   - '0.12'
-  - 'stable'
-  - 'latest'
+  - 'node' # latest
 sudo: required # needed for mongodb
 services: mongodb
 before_script:
