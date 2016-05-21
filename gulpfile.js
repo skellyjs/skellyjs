@@ -1,3 +1,5 @@
+'use strict';
+
 var git = require('gulp-git');
 var gulp = require('gulp');
 
@@ -18,11 +20,11 @@ gulp.task('publish:tag', function(done) {
 
   // tag the current commit
   git.tag(v, message, function (err) {
-    if (err) throw err;
+    if (err) { throw err; }
 
     // push to origin
-    git.push('origin', v, function (err) {
-      if (err) throw err;
+    git.push('origin', v, function (pushErr) {
+      if (pushErr) { throw pushErr; }
       done();
     });
   });
