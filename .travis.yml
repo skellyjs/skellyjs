@@ -9,5 +9,5 @@ sudo: required # needed for mongodb
 services: mongodb
 before_script:
   - sleep 15
-  - mongo skelly --eval 'db.createUser({user: "skelly", pwd: "test"});'
+  - mongo skelly --eval 'db.createUser({user:"skelly", pwd:"test"});'
 after_script: "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
