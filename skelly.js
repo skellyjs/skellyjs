@@ -94,6 +94,16 @@ var Skelly = function() {
   // set a global hash to be used until server is restarted
   _this.hash = crypto.randomBytes(5).toString('hex');
 
+  // allow for setting db variables either by skelly.db_host = 'asdf', or an env (shell env or .env) DB_HOST=asdf.
+  // Take in Order:                           FIRST                                            SECOND                     THIRD
+  /* istanbul ignore next */
+  _this.db_host       = _this.db_host       ? _this.db_host       : process.env.DB_HOST      ? process.env.DB_HOST      : undefined;
+  /* istanbul ignore next */
+  _this.db_name       = _this.db_name       ? _this.db_name       : process.env.DB_NAME      ? process.env.DB_NAME      : undefined;
+  /* istanbul ignore next */
+  _this.db_user       = _this.db_user       ? _this.db_user       : process.env.DB_USER      ? process.env.DB_USER      : undefined;
+  /* istanbul ignore next */
+  _this.db_password   = _this.db_password   ? _this.db_password   : process.env.DB_PASSWORD  ? process.env.DB_PASSWORD  : undefined;
 };
 
 // expose Skelly object
@@ -102,7 +112,7 @@ var skelly = module.exports = exports = new Skelly();
 skelly.init = function() {
   // if database host and name are specified, include the mongoose library and connect the models
   /* istanbul ignore else */
-  if (process.env.DB_HOST && process.env.DB_NAME) {
+  if (skelly.db_host && skelly.db_name) {
     require(path.join(skelly.moduleRoot,'lib','mongoose'))(skelly, function(err, models) {
       skelly.models = models;
     });

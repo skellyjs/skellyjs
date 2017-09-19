@@ -22,7 +22,6 @@
     "gulp-git": "*",
     "istanbul": "*",
     "mocha": "*",
-    "superagent": "*",
     "supertest": "*"
   },
   "author": {

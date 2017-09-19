@@ -12,6 +12,8 @@ skelly.modelsRoot = 'test/files/models';
 skelly.stylesheetsRoot = 'test/files/stylesheets';
 skelly.viewsRoot = 'test/files/views';
 
+skelly.db_host = 'localhost';
+
 skelly.init();
 
 describe('Skelly', function() {
