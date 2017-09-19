@@ -1,6 +1,6 @@
 {
   "name": "skellyjs",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "skellyjs framework",
   "dependencies": {
     "bcrypt-nodejs": "*",
