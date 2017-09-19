@@ -3,7 +3,6 @@ notifications:
   email:
     - skelly@skellyjs.com
 node_js:
-  - '0.12'
   - 'node' # latest
 sudo: required # needed for mongodb
 services: mongodb
